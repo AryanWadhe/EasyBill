@@ -14,7 +14,7 @@ dotenv.config();
 
 // Define allowed origins based on the environment
 const allowedOrigins = [
-  "http://localhost:3000", // Local development frontend
+  // "http://localhost:3000", // Local development frontend
   "https://quick-bill-client.vercel.app", // Vercel frontend
 ];
 
