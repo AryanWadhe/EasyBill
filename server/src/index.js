@@ -43,6 +43,10 @@ app.use(cookieParser());
 connectDB();
 
 // Define your routes
+app.get("/", (req, res) => {
+  res.send("Welcome to Quick Bill API");
+});
+
 app.use("/data", randomDataRouter);
 app.use("/auth", authRouter);
 app.use("/analytics", analyticsRouter);
