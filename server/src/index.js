@@ -14,7 +14,7 @@ dotenv.config();
 
 
 const corsOptions = {
-  origin: 'https://invo-sync.vercel.app', // allow requests from your frontend
+  origin: "https://quick-bill-client.vercel.app",
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE', // allowed methods
   credentials: true, // allow cookies or authentication headers
   optionsSuccessStatus: 200 // some legacy browsers choke on 204
