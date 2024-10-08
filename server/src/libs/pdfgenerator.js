@@ -81,17 +81,17 @@ export async function generatePDF(invoice) {
       const qrCodeDataUrl = await QRCode.toDataURL(url);
       const base64Data = qrCodeDataUrl.split(",")[1];
       const qrCodeBuffer = Buffer.from(base64Data, "base64");
-      doc.text("Scan for E-Bill", 455, 695);
+      doc.text("Scan to Pay", 480, 695);
       doc.image(qrCodeBuffer, 465, 710, { fit: [100, 100], align: "center", valign: "center" });
 
-      const upiPaymentUrl = "8237622003@axl"; // Assuming invoice.upiUrl contains the UPI link
-const upiQRCodeDataUrl = await QRCode.toDataURL(upiPaymentUrl);
-const upiBase64Data = upiQRCodeDataUrl.split(",")[1];
-const upiQRCodeBuffer = Buffer.from(upiBase64Data, "base64");
-doc.text("UPI Payment", 50, 695);
-doc.image(upiQRCodeBuffer, 50, 710, { fit: [100, 100], align: "center", valign: "center" });
-
       // End the document
+//         const upiPaymentUrl = "8237622003@axl"; // Assuming invoice.upiUrl contains the UPI link
+// const upiQRCodeDataUrl = await QRCode.toDataURL(upiPaymentUrl);
+// const upiBase64Data = upiQRCodeDataUrl.split(",")[1];
+// const upiQRCodeBuffer = Buffer.from(upiBase64Data, "base64");
+// doc.text("UPI Payment", 50, 695);
+// doc.image(upiQRCodeBuffer, 50, 710, { fit: [100, 100], align: "center", valign: "center" });
+      
       doc.end();
     } catch (error) {
       reject(error);
