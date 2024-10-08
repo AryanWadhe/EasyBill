@@ -1,10 +1,10 @@
 import nodemailer from "nodemailer";
 import dotenv from 'dotenv';
-dotenv.config();  
+dotenv.config();  // Ensure environment variables are loaded
 
 export const sendMail = async (options) => {
   try {
-    
+    // Ensure required environment variables are set
     const { SMTP_HOST, SMTP_PORT, SMTP_EMAIL, SMTP_PASS } = process.env;
     
     if (!SMTP_HOST || !SMTP_PORT || !SMTP_EMAIL || !SMTP_PASS) {
@@ -47,7 +47,7 @@ export const sendMail = async (options) => {
     //   from: SMTP_EMAIL,
     //   to: "lit2021052@iiitl.ac.in",
     //   subject: "testing",
-    //   text: "hello",
+    //   text: "Happy birthday bhai sahab",
     //   // attachments: [
     //   //   {
     //   //     filename: "invoice.pdf",
