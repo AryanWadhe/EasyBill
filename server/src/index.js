@@ -14,7 +14,7 @@ dotenv.config();
 
 
 const corsOptions = {
-  origin: "https://quick-bill-client.vercel.app",
+  origin: 'https://quick-bill-client-a4bqx45nr-aryanwadhes-projects.vercel.app',
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE', 
   credentials: true, 
   optionsSuccessStatus: 200 
