@@ -15,9 +15,9 @@ dotenv.config();
 
 const corsOptions = {
   origin: "https://quick-bill-client.vercel.app",
-  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE', // allowed methods
-  credentials: true, // allow cookies or authentication headers
-  optionsSuccessStatus: 200 // some legacy browsers choke on 204
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE', 
+  credentials: true, 
+  optionsSuccessStatus: 200 
 };
 
 app.use(cors(corsOptions));
