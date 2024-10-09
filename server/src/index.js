@@ -8,42 +8,47 @@ import authRouter from "./routes/auth.router.js";
 import invoiceRouter from "./routes/invoice.router.js";
 import analyticsRouter from "./routes/analytics.router.js";
 import PDFDocument from "pdfkit-table";
-console.log("first0")
-const app = express();
 dotenv.config();
 
+const app = express();
+
+// Allow multiple origins
+const allowedOrigins = [
+  'https://quick-bill-client-a4bqx45nr-aryanwadhes-projects.vercel.app',
+  'https://quick-bill-client.vercel.app'
+];
 
 const corsOptions = {
-  origin: 'https://quick-bill-client-a4bqx45nr-aryanwadhes-projects.vercel.app',
-  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE', 
-  credentials: true, 
-  optionsSuccessStatus: 200 
+  origin: function (origin, callback) {
+    if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  credentials: true,
+  optionsSuccessStatus: 200
 };
 
 app.use(cors(corsOptions));
+app.options('*', cors(corsOptions)); // Handle preflight
 
-// For preflight requests
-app.options('*', cors(corsOptions));
-console.log("first")
 app.use(express.json());
 app.use(cookieParser());
 
 connectDB();
 
+app.get("/", (req, res) => {
+  res.send({ api: "your backend is running" });
+});
 
-const port = process.env.PORT;
+app.use("/data", randomDataRouter);
+app.use("/auth", authRouter);
+app.use("/analytics", analyticsRouter);
+app.use("/invoice", invoiceRouter);
 
-app.get("/",(req,res)=>{
-  res.send({
-    api:"your backend is running"
-  })
-})
-
-app.use("/data",cors(), randomDataRouter);
-app.use("/auth",cors(), authRouter);
-app.use("/analytics",cors(), analyticsRouter);
-app.use("/invoice",cors(), invoiceRouter);
-
+const port = process.env.PORT || 3000;
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
