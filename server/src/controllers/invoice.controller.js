@@ -40,7 +40,8 @@ export const createInvoice = async (req, res) => {
     });
     invoice.business = res.locals.business;
     const pdf = await generatePDF(invoice);
-
+  //  console.log("adarsh")
+  // sendMail();
     await sendMail({
       email: data.email,
       subject: "Invoice for " + data.name,
