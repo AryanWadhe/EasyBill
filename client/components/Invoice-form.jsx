@@ -31,6 +31,7 @@ import { Trash } from "lucide-react";
 import { invoiceSchema } from "@/schemas/zodSchema";
 import { toast } from "sonner";
 import Cookies from "js-cookie";
+import { useRouter } from "next/navigation";
 
 export default function InvoiceForm() {
   const form = useForm({
@@ -53,8 +54,15 @@ export default function InvoiceForm() {
     name: "items",
     control: form.control,
   });
+const router = useRouter();
+  const routing = ()=>{
+    router.push("/")
+  }
+// const router = useRouter();
+//   const routing = ()=>{
+//     router.push("/")
+//   }
 
-  
   async function generateRandomData() {
     try {
       const fields = [
@@ -398,7 +406,8 @@ export default function InvoiceForm() {
           >
             Generate Random Data
           </Button>
-          <Button className="rounded-full px-10 text-xl" type="submit">
+          <Button className="rounded-full px-10 text-xl" type="submit" onClick={routing}>
+          {/* <Button className="rounded-full px-10 text-xl" type="submit" onClick={routing}> */}
             Submit
           </Button>
         </div>
