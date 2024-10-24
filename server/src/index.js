@@ -14,8 +14,13 @@ const app = express();
 
 // Allow multiple origins
 const allowedOrigins = [
+<<<<<<< HEAD
   'https://quick-bill-client-a4bqx45nr-aryanwadhes-projects.vercel.app',
   'https://quick-bill-client.vercel.app'
+=======
+  "http://localhost:3000", // Local development frontend
+  "https://quick-bill-client.vercel.app", // Vercel frontend
+>>>>>>> b6eece6 (Register form updated)
 ];
 
 const corsOptions = {

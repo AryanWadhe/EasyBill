@@ -12,7 +12,7 @@ export async function generatePDF(invoice) {
         resolve(pdfData);
       });
 
-      // PDF generation starts here
+      // PDF generation 
       doc.fontSize(32).text("Invoice", { align: "center" });
 
       doc.moveDown();
